@@ -1,104 +1,183 @@
-/* CSS Variables for Theme Management */
+/* Ocean Professional Theme (blue primary, amber secondary) */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --ocean-primary: #2563eb;
+  --ocean-secondary: #f59e0b;
+  --ocean-danger: #ef4444;
+
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: rgba(17, 24, 39, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.06);
+  --shadow-md: 0 10px 30px rgba(17, 24, 39, 0.08);
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+
+  --focus: 0 0 0 3px rgba(37, 99, 235, 0.25);
+
+  --gradient-bg: radial-gradient(1200px 600px at 20% 0%, rgba(37, 99, 235, 0.10), transparent 55%),
+    radial-gradient(1000px 500px at 85% 10%, rgba(245, 158, 11, 0.10), transparent 55%),
+    linear-gradient(180deg, rgba(17, 24, 39, 0.02), transparent 35%);
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+* {
+  box-sizing: border-box;
 }
 
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.app {
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: var(--gradient-bg);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main {
+  padding: 20px 0 56px;
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
-}
-
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
+.skipLink {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  left: -999px;
+  top: 8px;
+  z-index: 9999;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.skipLink:focus {
+  left: 12px;
+  outline: none;
+  box-shadow: var(--shadow-md), var(--focus);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 140ms ease, box-shadow 140ms ease, background-color 140ms ease, border-color 140ms ease;
+  box-shadow: var(--shadow-sm);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.btn:active {
+  transform: translateY(0px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-md), var(--focus);
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+.btnPrimary {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 1), rgba(37, 99, 235, 0.92));
+  color: #ffffff;
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.03);
+}
+
+.btnDanger {
+  background: rgba(239, 68, 68, 0.10);
+  border-color: rgba(239, 68, 68, 0.28);
+  color: #991b1b;
+}
+
+.btnGhost {
+  background: transparent;
+  box-shadow: none;
+}
+
+.btnGhost:hover {
+  background: rgba(17, 24, 39, 0.04);
+  box-shadow: none;
+  transform: none;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 10px 12px;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  box-shadow: var(--focus);
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.helper {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.errorText {
+  color: #991b1b;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 14px 0 44px;
   }
 }

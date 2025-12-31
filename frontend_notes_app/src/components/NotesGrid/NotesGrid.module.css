@@ -1,0 +1,44 @@
+.grid {
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.grid > * {
+  grid-column: span 4;
+}
+
+.emptyWrap {
+  margin-top: 14px;
+}
+
+.emptyCard {
+  padding: 20px;
+  text-align: left;
+}
+
+.emptyTitle {
+  margin: 0 0 6px;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.emptyDesc {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.45;
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  .grid > * {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid > * {
+    grid-column: span 12;
+  }
+}
